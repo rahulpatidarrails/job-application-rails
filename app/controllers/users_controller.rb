@@ -20,6 +20,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def forgot_password
+    user = User.find_by_email(params[:email])
+    if user
+      user.generate_reset_password_token
+      render json: {result: 0}
+    else
+      render json: {result: 1, message: "Invalid email address."}
+    end
+
+  end
+
+  def change_password
+    user = User.find_by_email(params[:token])
+    if user
+      user.update_attributes(password: params[:password])
+      render json: {result: 0}
+    else
+      render json: {result: 1, message: "Invalid token."}
+    end
+  end
+
   private
 
     def user_params
