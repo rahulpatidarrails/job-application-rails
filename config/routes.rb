@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create] do
     collection do
       post 'forgot_password'
-      get 'change_password'
+      post 'change_password'
     end
   end
 
