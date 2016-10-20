@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def change_password
-    user = User.find_by_email(params[:token])
+    user = User.find_by_token(params[:token])
     if user
       user.update_attributes(password: params[:password])
       render json: {result: 0}
