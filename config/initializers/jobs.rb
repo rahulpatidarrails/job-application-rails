@@ -1,0 +1,1 @@
+PENDING_JOBS = YAML.load_file("#{Rails.root}/config/data/pending_jobs.yml")
