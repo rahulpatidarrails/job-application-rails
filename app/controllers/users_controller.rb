@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
     category = ['mobile', 'php', 'ruby', 'html5', 'css', 'bootstrap', 'ruby on rails', 'reactjs', 'android', 'ios', 'mobile', 'website', 'server'].sample(rand(1..13)).uniq
     
-    data = { result: 0, job_id: params[:id], title: "title #{params[:id]}", post_date: (Date.today - ("#{params[:id]}").to_i.days), description: Faker::Lorem.paragraph(10), pay_type: pay_type[:type], hour_rate: pay_type[:hour_rate], budget: pay_type[:budget], lasting: lasting[:type], privacy: privacy[:type], invited_count: rand(0..100), recommended_count: rand(1..100), proposal_count: rand(0..100), category: category}
+    data = { result: 0, job_id: params[:id], title: "title #{params[:id]}", post_date: (Date.today - ("#{params[:id]}").to_i.days), description: Faker::Lorem.paragraph(10), pay_type: pay_type[:type], hour_rate: pay_type[:hour_rate], budget: pay_type[:budget], lasting: lasting[:type], privacy: privacy[:type], invited_count: rand(0..10), recommended_count: rand(0..3), proposal_count: rand(0..3), category: category}
     
     render json: data
   end
