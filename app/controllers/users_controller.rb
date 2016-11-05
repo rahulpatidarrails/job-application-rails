@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def pending_job_details
-    sleep 1
+    # sleep 0.3
     pay_type = [{type: 'hour_rate', hour_rate: "$#{rand(5...50)}", budget: nil},{ type: 'fixed_rate', budget: "$#{rand(200...10000)}"}].sample
 
     lasting = [{type: 'Less than 1 week', value: 'less_than_1_week'}, {type: 'Less than 2 weeks', value: 'less_than_2_weeks'}, {type: 'Less than 1 month', value: 'less_than_1_month'}, {type: 'More than 1 month', value: 'more_than_1_month'}].sample
