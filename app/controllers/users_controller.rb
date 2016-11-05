@@ -42,7 +42,22 @@ class UsersController < ApplicationController
   end
 
   def pending_jobs
-    render json: { result: 0, job_id: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] }
+    render json: { result: 0, job_id: (1...34).to_a }
+  end
+
+  def pending_job_details
+    sleep 1
+    pay_type = [{type: 'hour_rate', hour_rate: "$#{rand(5...50)}", budget: nil},{ type: 'fixed_rate', budget: "$#{rand(200...10000)}"}].sample
+
+    lasting = [{type: 'Less than 1 week', value: 'less_than_1_week'}, {type: 'Less than 2 weeks', value: 'less_than_2_weeks'}, {type: 'Less than 1 month', value: 'less_than_1_month'}, {type: 'More than 1 month', value: 'more_than_1_month'}].sample
+
+    privacy = [{type: 'Public Job', value: 'public_job'}, {type: 'Private Job', value: 'private_job'}].sample
+
+    category = ['mobile', 'php', 'ruby', 'html5', 'css', 'bootstrap', 'ruby on rails', 'reactjs', 'android', 'ios', 'mobile', 'website', 'server'].sample(rand(1..13)).uniq
+    
+    data = { result: 0, job_id: params[:id], title: "title #{params[:id]}", post_date: (Date.today - ("#{params[:id]}").to_i.days), description: Faker::Lorem.paragraph(10), pay_type: pay_type[:type], hour_rate: pay_type[:hour_rate], budget: pay_type[:budget], lasting: lasting[:type], privacy: privacy[:type], invited_count: rand(0..100), recommended_count: rand(1..100), proposal_count: rand(0..100), category: category}
+    
+    render json: data
   end
 
   private

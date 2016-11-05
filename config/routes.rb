@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   post '/jobs/pending' => 'users#pending_jobs'
 
+  post '/jobs/pending_job_details' => 'users#pending_job_details'
+
   resources :users, only: [:create] do
     collection do
       post 'forgot_password'
