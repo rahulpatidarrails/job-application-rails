@@ -6,6 +6,13 @@ Rails.application.routes.draw do
 
   post '/jobs/pending_job_details' => 'users#pending_job_details'
 
+  post '/jobs/invitedJobs' => 'users#invitedJobs'
+
+  post '/jobs/invitedJobsUserProfile' => 'users#invitedJobsUserProfile'
+
+  post '/users/like' => 'users#like'
+  post '/users/unlike' => 'users#unlike'
+
   resources :users, only: [:create] do
     collection do
       post 'forgot_password'

@@ -60,6 +60,34 @@ class UsersController < ApplicationController
     render json: data
   end
 
+  def invitedJobs
+    render json: { result: 0, user_id: (1...34).to_a }
+  end
+
+  def invitedJobsUserProfile
+    data = {
+      result: 0,
+      user_id: params[:id],
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      introduction: Faker::Lorem.paragraph(1),
+      currency: '$',
+      hour_rate: rand(10..30),
+      level: rand(2..(5.0)).round(2),
+      profile_picture: '/dummy-image.jpg',
+      is_liked: [true, false].sample
+    }
+    render json: data
+  end
+
+  def like
+    render json: { result: 0 }
+  end
+
+  def unlike
+    render json: { result: 0 }
+  end
+
   private
 
     def user_params
