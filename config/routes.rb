@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/jobs/pending_job_details' => 'users#pending_job_details'
 
   post '/jobs/invitedJobs' => 'users#invitedJobs'
+  post '/users/searchUsers' => 'users#searchUsers'
 
   post '/jobs/invitedJobsUserProfile' => 'users#invitedJobsUserProfile'
 

@@ -45,6 +45,10 @@ class UsersController < ApplicationController
     render json: { result: 0, job_id: (1...34).to_a }
   end
 
+  def searchUsers
+    render json: { result: 0, user_id: (1...54).to_a }
+  end
+
   def pending_job_details
     # sleep 0.3
     pay_type = [{type: 'hour_rate', hour_rate: "$#{rand(5...50)}", budget: nil},{ type: 'fixed_rate', budget: "$#{rand(200...10000)}"}].sample
@@ -75,7 +79,8 @@ class UsersController < ApplicationController
       hour_rate: rand(10..30),
       level: rand(2..(5.0)).round(2),
       profile_picture: '/dummy-image.jpg',
-      is_liked: [true, false].sample
+      is_liked: [true, false].sample,
+      invited: false
     }
     render json: data
   end
@@ -91,6 +96,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :country)
+      # params.require(:user).permit(:first_name, :last_name, :email, :password, :country)
+      params.require(:user).permit(:name, :email, :password)
     end
 end
